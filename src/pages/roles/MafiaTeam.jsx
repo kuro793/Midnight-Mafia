@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function MafiaTeam() {
   return (
     <div className="min-h-screen bg-black text-red-400 p-8">

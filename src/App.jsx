@@ -11,7 +11,7 @@ import Game from "./pages/Game";
 
 export default function App() {
   return (
-    <Router basename="/">
+    <Router basename="/Midnight-Mafia/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explanation" element={<Explanation />} />

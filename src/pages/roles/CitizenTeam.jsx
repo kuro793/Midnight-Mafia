@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function CitizenTeam() {
   return (
     <div className="min-h-screen bg-black text-blue-300 p-8">
