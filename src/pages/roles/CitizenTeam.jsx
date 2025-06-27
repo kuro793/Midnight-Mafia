@@ -62,7 +62,7 @@ export default function CitizenTeam() {
       <div className="text-center mt-10">
         <Link to="/roles/" className="text-green-300 underline">← 이전으로</Link>
       </div>
-      <div className="text-center mt-10">
+      <div className="text-center mt-4">
         <Link to="/" className="text-green-300 underline">← 처음으로</Link>
       </div>
     </div>
