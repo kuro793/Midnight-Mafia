@@ -7,7 +7,8 @@ import CitizenTeam from "./pages/roles/CitizenTeam";
 import NeutralTeam from "./pages/roles/NeutralTeam";
 import NeutralPeace from "./pages/roles/neutral/Peace";
 import NeutralKiller from "./pages/roles/neutral/Killer";
-import Game from "./pages/Game";
+import Players from "./pages/game/setting/Player";
+import RoleSelect from "./pages/game/setting/RoleSelect";
 
 export default function App() {
   return (
@@ -21,7 +22,8 @@ export default function App() {
         <Route path="/roles/neutral" element={<NeutralTeam />} />
         <Route path="/roles/neutral/peace" element={<NeutralPeace />} />
         <Route path="/roles/neutral/killer" element={<NeutralKiller />} />
-        <Route path="/game" element={<Game />} />
+        <Route path="/players" element={<Players />} />
+        <Route path="/role-select" element={<Players />} />
       </Routes>
     </Router>
   );
