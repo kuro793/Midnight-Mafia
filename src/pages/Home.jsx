@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  useEffect(() => {
+    console.log("🏠 Home 컴포넌트가 마운트됨!");
+  }, []);
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col items-center justify-center space-y-6">
       <h1 className="text-4xl font-bold mb-10">🌙 Midnight Mafia</h1>
