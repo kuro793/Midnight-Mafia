@@ -26,7 +26,7 @@ export default function Roles() {
         ⚖️ 중립
       </Link>
       <div className="text-center mt-10">
-        <a href="/" className="text-green-300 underline">← 처음으로</a>
+        <Link to="/" className="text-green-300 underline">← 처음으로</Link>
       </div>
     </div>
   );
