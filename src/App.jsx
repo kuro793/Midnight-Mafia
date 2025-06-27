@@ -7,7 +7,7 @@ import CitizenTeam from "./pages/roles/CitizenTeam";
 import NeutralTeam from "./pages/roles/NeutralTeam";
 import NeutralPeace from "./pages/roles/neutral/Peace";
 import NeutralKiller from "./pages/roles/neutral/Killer";
-import Players from "./pages/game/setting/Player";
+import Players from "./pages/game/setting/Players";
 import RoleSelect from "./pages/game/setting/RoleSelect";
 
 export default function App() {
