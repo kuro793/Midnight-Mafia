@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🌒 Midnight Mafia
 
 **Midnight Mafia**는 오프라인 마피아 게임에서 사회자의 역할을 대신하는 웹앱입니다.  
@@ -55,4 +54,3 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 9833bb9 (🎉 초기 커밋)
