@@ -44,7 +44,7 @@ export default function Players() {
         <button onClick={decrement}>－</button>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 flex flex-col items-center">
         {Array.from({ length: playerCount }, (_, i) => (
           <input
             key={i}
@@ -52,7 +52,7 @@ export default function Players() {
             value={names[i] || ""}
             onChange={(e) => handleNameChange(i, e.target.value)}
             placeholder={`플레이어 ${i + 1} 이름`}
-            className="border p-2 rounded w-full"
+            className="border p-2 rounded w-full max-w-sm"
           />
         ))}
       </div>
