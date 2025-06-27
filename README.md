@@ -10,7 +10,7 @@
 ---
 
 ## 배포 주소
-[공식 배포 사이트] https://kuro793.github.io/Midnight-Mafia/
+[공식 배포 사이트] https://kuro793.github.io/Midnight-Mafia/  
 [전용 앱] (개발 예정)
 
 ## 개발 상태
