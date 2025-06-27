@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Explanation from "./pages/Explanation";
-import Roles from "./pages/Roles";
-import Game from "./pages/Game";
+// import Roles from "./pages/Roles";
+// import Game from "./pages/Game";
 
 export default function App() {
   return (
