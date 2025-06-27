@@ -11,7 +11,7 @@ export default function Home() {
       <Link to="/roles" className="bg-green-800 px-6 py-3 rounded-xl hover:bg-green-700 transition">
         직업 소개
       </Link>
-      <Link to="/game" className="bg-green-800 px-6 py-3 rounded-xl hover:bg-green-700 transition">
+      <Link to="/players" className="bg-green-800 px-6 py-3 rounded-xl hover:bg-green-700 transition">
         게임 시작
       </Link>
     </div>
