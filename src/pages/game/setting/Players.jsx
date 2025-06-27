@@ -3,6 +3,23 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Players() {
   const [playerCount, setPlayerCount] = useState(6); // 기본값 6
+  const [names, setNames] = useState(Array(4).fill(""));
+  
+  const handleNameChange = (index, value) => {
+    const updated = [...names];
+    updated[index] = value;
+    setNames(updated);
+  };
+  // 플레이어 수 바뀔 때 이름 배열도 재설정
+  const updatePlayerCount = (count) => {
+    setPlayerCount(count);
+    setNames((prev) => {
+      const newNames = [...prev];
+      newNames.length = count;
+      return newNames.map((name, i) => name || "");
+    });
+  };
+  
   const navigate = useNavigate();
 
   const increment = () => setPlayerCount(prev => Math.min(prev + 1, 20)); // 최대 20명
@@ -25,6 +42,19 @@ export default function Players() {
         />
         <button onClick={increment}>＋</button>
         <button onClick={decrement}>－</button>
+      </div>
+
+      <div className="space-y-2">
+        {Array.from({ length: playerCount }, (_, i) => (
+          <input
+            key={i}
+            type="text"
+            value={names[i] || ""}
+            onChange={(e) => handleNameChange(i, e.target.value)}
+            placeholder={`플레이어 ${i + 1} 이름`}
+            className="border p-2 rounded w-full"
+          />
+        ))}
       </div>
 
       <button onClick={goToRoleSelect} className="mt-4 p-2 bg-blue-500 text-white rounded">
