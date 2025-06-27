@@ -23,7 +23,7 @@ export default function App() {
         <Route path="/roles/neutral/peace" element={<NeutralPeace />} />
         <Route path="/roles/neutral/killer" element={<NeutralKiller />} />
         <Route path="/players" element={<Players />} />
-        <Route path="/role-select" element={<Players />} />
+        <Route path="/role-select" element={<RoleSelect />} />
       </Routes>
     </Router>
   );
