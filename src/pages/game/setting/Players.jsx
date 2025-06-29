@@ -31,7 +31,7 @@ export default function Players() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-green-400 flex-col items-center gap-4 p-6">
+    <div className="min-h-screen bg-black text-green-400 flex flex-col items-center gap-4 p-6">
       <div className="flex items-center gap-2">
         <label>플레이어 수:</label>
         <input
