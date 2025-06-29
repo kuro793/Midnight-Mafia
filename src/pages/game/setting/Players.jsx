@@ -30,8 +30,12 @@ export default function Players() {
   .every(name => name.trim() !== '');
 
   const goToRoleSelect = () => {
-    // playerCount를 전역 상태에 저장하는 로직 필요
-    navigate('/role-select');
+    navigate('/role-select', {
+      state: {
+          playerCount,
+          names: names.slice(0, playerCount)
+      }
+    });
   };
 
   return (
