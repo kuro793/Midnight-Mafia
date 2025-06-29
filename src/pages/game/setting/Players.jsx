@@ -31,7 +31,7 @@ export default function Players() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 p-6">
+    <div className="min-h-screen bg-black text-green-400 flex-col items-center gap-4 p-6">
       <div className="flex items-center gap-2">
         <label>플레이어 수:</label>
         <input
@@ -57,11 +57,11 @@ export default function Players() {
         ))}
       </div>
 
-      <button onClick={goToRoleSelect} className="mt-4 p-2 bg-blue-500 text-white rounded">
+      <button onClick={goToRoleSelect} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
         직업 구성 설정하기
       </button>
 
-      <button onClick={() => navigate('/')} className="mt-2 text-gray-500 underline">
+      <button onClick={() => navigate('/')} className="mt-2 text-green-300 underline">
         홈으로
       </button>
     </div>
