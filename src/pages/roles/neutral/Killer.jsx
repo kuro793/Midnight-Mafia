@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NeutralKiller() {
   return (
-    <div className="min-h-screen bg-black text-red-300 p-8">
+    <div className="min-h-screen bg-black text-purple-300 p-8">
       <h2 className="text-2xl font-bold mb-8">중립 살인직 역할</h2>
 
       <div className="space-y-6">
