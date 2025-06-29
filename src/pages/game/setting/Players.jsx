@@ -62,7 +62,7 @@ export default function Players() {
       </div>
 
       <button onClick={() => {
-        if (allNamesFilled) navigate('/game/role-select');
+        if (allNamesFilled) goToRoleSelect();
         else alert('모든 플레이어의 이름을 입력해주세요.');
       }} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
         직업 구성 설정하기
