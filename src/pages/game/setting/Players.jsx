@@ -36,13 +36,13 @@ export default function Players() {
 
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col items-center gap-4 p-6">
-      <div className="text-black flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <label>플레이어 수:</label>
         <input
           type="number"
           value={playerCount}
           onChange={(e) => setPlayerCount(Math.max(4, Math.min(20, Number(e.target.value))))}
-          className="w-16 text-center border rounded"
+          className="w-16 text-black text-center border rounded"
         />
         <button onClick={increment}>＋</button>
         <button onClick={decrement}>－</button>
