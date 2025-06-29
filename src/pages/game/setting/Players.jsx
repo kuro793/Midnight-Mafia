@@ -25,7 +25,7 @@ export default function Players() {
   const increment = () => setPlayerCount(prev => Math.min(prev + 1, 20)); // 최대 20명
   const decrement = () => setPlayerCount(prev => Math.max(prev - 1, 4));  // 최소 4명
 
-  const allNamesFilled = playerNames // 이름채우기 확인
+  const allNamesFilled = names // 이름채우기 확인
   .slice(0, playerCount)
   .every(name => name.trim() !== '');
 
