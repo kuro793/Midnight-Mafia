@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Players() {
   const [playerCount, setPlayerCount] = useState(6); // 기본값 6
-};
   
   const navigate = useNavigate();
 
@@ -28,7 +27,7 @@ export default function Players() {
         <button onClick={increment}>＋</button>
       </div>
 
-      <button onClick={() => {goToRoleSelect();} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
+      <button onClick={goToRoleSelect} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
         직업 구성 설정하기
       </button>
 
