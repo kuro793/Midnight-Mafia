@@ -47,11 +47,12 @@ export default function RoleSelect() {
       mafia: 0,
       spy: 0,
       // 시민팀
-      citizen: 0,
       police: 0,
       doctor: 0,
       soldier: 0,
       politician: 0,
+      // 시민 (자동)
+      citizen: 0,
       // 중립 평화직
       survivor: 0,
       fool: 0,
@@ -61,33 +62,26 @@ export default function RoleSelect() {
     };
   });
 
-  useEffect(() => {
-    const totalAssigned = Object.entries(roles)
-      .filter(([key]) => key !== "citizen")
-      .reduce((sum, [, count]) => sum + count, 0);
-
-    const remaining = Math.max(0, playerCount - totalAssigned);
-
-    setRoles(prev => ({
-      ...prev,
-      citizen: remaining,
-    }));
-  }, [/* 마피아팀 */ roles.spy, roles.mafia, /* 시민팀 */ roles.police, roles.doctor, roles.soldier, roles.politician, /* 중립 평화직 */ roles.survivor, roles.fool, /* 중립 살인직 */ roles.serialKiller, roles.hitman, playerCount]);
-
-
   function updateRole(key, delta, max) {
     setRoles(prev => {
-      const total = Object.values(prev).reduce((a, b) => a + b, 0);
       const current = prev[key];
       const next = current + delta;
 
       // 증가할 때는 총합을 체크, 감소는 자유
-      if (delta > 0 && (total >= max || next > max)) return prev;
+      if (delta > 0 && (Object.values(prev).reduce((a, b) => a + b, 0) >= max || next > max)) return prev;
 
-      return {
+      const updated = {
         ...prev,
         [key]: Math.max(0, next),
       };
+
+      const totalWithoutCitizen = Object.entries(updated)
+        .filter(([k]) => k !== 'citizen')
+        .reduce((sum, [, count]) => sum + count, 0);
+
+      updated.citizen = Math.max(0, max - totalWithoutCitizen);
+
+      return updated;
     });
   }
 
