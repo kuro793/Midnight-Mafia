@@ -17,16 +17,16 @@ export default function RoleSelect() {
   const { playerCount } = location.state || {};
 
   const rolesConfig = [
-    { key: 'mafia', label: '마피아', color: 'text-red-400' },
-    { key: 'spy', label: '스파이', color: 'text-red-400' },
-    { key: 'police', label: '경찰', color: 'text-blue-300' },
-    { key: 'doctor', label: '의사', color: 'text-blue-300' },
-    { key: 'soldier', label: '군인', color: 'text-blue-300' },
-    { key: 'politician', label: '정치인', color: 'text-blue-300' },
-    { key: 'survivor', label: '생존자', color: 'text-yellow-200' },
-    { key: 'fool', label: '광대', color: 'text-yellow-200' },
-    { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300' },
-    { key: 'hitman', label: '청부업자', color: 'text-purple-300' },
+    { key: 'mafia', label: '마피아', color: 'text-red-400', team: '마피아팀' },
+    { key: 'spy', label: '스파이', color: 'text-red-400', team: '마피아팀' },
+    { key: 'police', label: '경찰', color: 'text-blue-300', team: '시민팀' },
+    { key: 'doctor', label: '의사', color: 'text-blue-300', team: '시민팀' },
+    { key: 'soldier', label: '군인', color: 'text-blue-300', team: '시민팀' },
+    { key: 'politician', label: '정치인', color: 'text-blue-300', team: '시민팀' },
+    { key: 'survivor', label: '생존자', color: 'text-yellow-200', team: '중립 평화직' },
+    { key: 'fool', label: '광대', color: 'text-yellow-200', team: '중립 평화직' },
+    { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: 중립 살인직 },
+    { key: 'hitman', label: '청부업자', color: 'text-purple-300', team: '중립 살인직' },
   ];
 
   const [roles, setRoles] = useState(() => {
@@ -68,13 +68,12 @@ export default function RoleSelect() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-black">
       <h1 className="text-3xl font-bold text-green-400">직업 구성 설정</h1>
-      {/* 맢팀red400 시팀blue300 중평yellow200 중살purple300 */}
 
       <div className="flex flex-col gap-2">
-        {rolesConfig.map(({ key, label, color }) => (
-          <div className={color}>
+        {rolesConfig.map(({ key, label, color, team }) => (
+          <div key={key} className={color}>
+            <h2 className="text-2xl font-italic">{team}</h2>
             <RoleCounter
-              key={key}
               role={label}
               count={roles[key]}
               onIncrement={() => updateRole(key, 1, playerCount)}
