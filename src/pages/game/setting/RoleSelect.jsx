@@ -44,6 +44,13 @@ export default function RoleSelect() {
     // 추후 추가 가능
   });
 
+  function updateRole(key, delta, max) {
+    setRoles(prev => ({
+      ...prev,
+      [key]: Math.max(0, Math.min(max, prev[key] + delta))
+     }));
+   }
+
   return (
     <div className="min-h-screen bg-black">
       <h1 className="text-3xl font-bold text-green-400">직업 구성 설정</h1>
@@ -56,8 +63,8 @@ export default function RoleSelect() {
               key={key}
               role={label}
               count={roles[key]}
-              onIncrement={() => updateRole(setRoles, 1)}
-              onDecrement={() => updateRole(setRoles, -1)}
+              onIncrement={() => updateRole(key, 1, playerCount)}
+              onDecrement={() => updateRole(key, -1, playerCount)}
             />
           </div>
         ))}
