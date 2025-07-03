@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function RoleCounter({ role, count, onIncrement, onDecrement }) {
@@ -30,18 +30,20 @@ export default function RoleSelect() {
     // 추가 예정
   ];
 
-  const [roles, setRoles] = useState({
-    mafia: 0,
-    spy: 0,
-    police: 0,
-    doctor: 0,
-    soldier: 0,
-    politician: 0,
-    survivor: 0,
-    fool: 0,
-    serialKiller: 0,
-    hitman: 0,
-    // 추후 추가 가능
+  const [roles, setRoles] = useState(() => {
+    const saved = localStorage.getItem('savedRoles');
+    return saved ? JSON.parse(saved) : {
+      mafia: 0,
+      spy: 0,
+      police: 0,
+      doctor: 0,
+      soldier: 0,
+      politician: 0,
+      survivor: 0,
+      fool: 0,
+      serialKiller: 0,
+      hitman: 0,
+    };
   });
 
   function updateRole(key, delta, max) {
@@ -51,8 +53,12 @@ export default function RoleSelect() {
      }));
    }
 
+  useEffect(() => {
+    localStorage.setItem('savedRoles', JSON.stringify(roles));
+  }, [roles]);
+
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-black">
       <h1 className="text-3xl font-bold text-green-400">직업 구성 설정</h1>
       {/* 맢팀red400 시팀blue300 중평yellow200 중살purple300 */}
 
