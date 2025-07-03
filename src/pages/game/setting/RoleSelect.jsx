@@ -12,7 +12,7 @@ function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
       ) : (
         <>
           <button onClick={onDecrement} className="px-2 bg-gray-700 rounded">−</button>
-          <span className="w-6 text-center">{count}</span>
+          <span className="w-6 text-center">(자동 결정) {count}</span>
           <button onClick={onIncrement} className="px-2 bg-gray-700 rounded">＋</button>
         </>
       )}
@@ -90,7 +90,7 @@ export default function RoleSelect() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-black">
-      <h1 className="text-3xl font-bold text-green-400">직업 구성 설정</h1>
+      <h1 className="text-3xl font-bold text-green-400 gap-2">직업 구성 설정</h1>
 
       <div className="flex flex-col gap-2">
         {[...new Set(rolesConfig.map(r => r.team))].map(team => (
