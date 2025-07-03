@@ -70,17 +70,26 @@ export default function RoleSelect() {
       <h1 className="text-3xl font-bold text-green-400">직업 구성 설정</h1>
 
       <div className="flex flex-col gap-2">
-        {rolesConfig.map(({ key, label, color, team }) => (
-          <div key={key} className={color}>
-            <h2 className="text-2xl">{team}</h2>
-            <RoleCounter
-              role={label}
-              count={roles[key]}
-              onIncrement={() => updateRole(key, 1, playerCount)}
-              onDecrement={() => updateRole(key, -1, playerCount)}
-            />
+        {[...new Set(rolesConfig.map(r => r.team))].map(team => (
+          <div key={team} className="mb-4">
+            <h2 className="text-2xl font-bold text-white mb-2">{team}</h2>
+            <div className="flex flex-col gap-2">
+              {rolesConfig
+                .filter(r => r.team === team)
+                .map(({ key, label, color }) => (
+                  <div key={key} className={color}>
+                    <RoleCounter
+                      role={label}
+                      count={roles[key]}
+                      onIncrement={() => updateRole(key, 1, playerCount)}
+                      onDecrement={() => updateRole(key, -1, playerCount)}
+                    />
+                  </div>
+                ))}
+            </div>
           </div>
         ))}
+
       </div>
       
     </div>
