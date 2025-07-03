@@ -23,6 +23,7 @@ export default function RoleSelect() {
     { key: 'doctor', label: '의사', color: 'text-blue-300', team: '시민팀' },
     { key: 'soldier', label: '군인', color: 'text-blue-300', team: '시민팀' },
     { key: 'politician', label: '정치인', color: 'text-blue-300', team: '시민팀' },
+    { key: 'citizen', label: '시민', color: 'text-blue-300', team: '시민팀', auto: true },
     { key: 'survivor', label: '생존자', color: 'text-yellow-200', team: '중립 평화직' },
     { key: 'fool', label: '광대', color: 'text-yellow-200', team: '중립 평화직' },
     { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: '중립 살인직' },
@@ -44,6 +45,20 @@ export default function RoleSelect() {
       hitman: 0,
     };
   });
+
+  useEffect(() => {
+    const totalAssigned = Object.entries(roles)
+      .filter(([key]) => key !== "citizen")
+      .reduce((sum, [, count]) => sum + count, 0);
+
+    const remaining = Math.max(0, playerCount - totalAssigned);
+
+    setRoles(prev => ({
+      ...prev,
+      citizen: remaining,
+    }));
+  }, [roles.spy, roles.mafia, roles.police, roles.doctor, roles.soldier, roles.politician, roles.survivor, roles.fool, roles.serialKiller, roles.hitman, playerCount]);
+
 
   function updateRole(key, delta, max) {
     setRoles(prev => {
@@ -72,7 +87,7 @@ export default function RoleSelect() {
       <div className="flex flex-col gap-2">
         {[...new Set(rolesConfig.map(r => r.team))].map(team => (
           <div key={team} className="mb-4">
-            <h2 className="text-2xl font-bold text-white mb-2">{team}</h2>
+            <h2 className="text-2xl font-bold ${color} mb-2">{team}</h2>
             <div className="flex flex-col gap-2">
               {rolesConfig
                 .filter(r => r.team === team)
@@ -81,8 +96,8 @@ export default function RoleSelect() {
                     <RoleCounter
                       role={label}
                       count={roles[key]}
-                      onIncrement={() => updateRole(key, 1, playerCount)}
-                      onDecrement={() => updateRole(key, -1, playerCount)}
+                      onIncrement={() => !auto && updateRole(key, 1, playerCount)}
+                      onDecrement={() => !auto && updateRole(key, -1, playerCount)}
                     />
                   </div>
                 ))}
