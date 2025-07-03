@@ -43,14 +43,19 @@ export default function RoleSelect() {
   const [roles, setRoles] = useState(() => {
     const saved = localStorage.getItem('savedRoles');
     return saved ? JSON.parse(saved) : {
+      // 마피아팀
       mafia: 0,
       spy: 0,
+      // 시민팀
+      citizen: 0,
       police: 0,
       doctor: 0,
       soldier: 0,
       politician: 0,
+      // 중립 평화직
       survivor: 0,
       fool: 0,
+      // 중립 살인직
       serialKiller: 0,
       hitman: 0,
     };
@@ -67,7 +72,7 @@ export default function RoleSelect() {
       ...prev,
       citizen: remaining,
     }));
-  }, [roles.spy, roles.mafia, roles.police, roles.doctor, roles.soldier, roles.politician, roles.survivor, roles.fool, roles.serialKiller, roles.hitman, playerCount]);
+  }, [/* 마피아팀 */ roles.spy, roles.mafia, /* 시민팀 */ roles.police, roles.doctor, roles.soldier, roles.politician, /* 중립 평화직 */ roles.survivor, roles.fool, /* 중립 살인직 */ roles.serialKiller, roles.hitman, playerCount]);
 
 
   function updateRole(key, delta, max) {
