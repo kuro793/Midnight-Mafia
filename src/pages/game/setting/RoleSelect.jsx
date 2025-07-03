@@ -54,8 +54,8 @@ export default function RoleSelect() {
       <div className="flex flex-col gap-2">
         {rolesConfig.map(({ name, key }) => (
           <RoleCounter
-            key={key}
-            role={name}
+            key='mafia'
+            role='마피아'
             count={roles[key]}
             onIncrement={() => updateRole(key, 1)}
             onDecrement={() => updateRole(key, -1)}
