@@ -56,8 +56,8 @@ export default function RoleSelect() {
               key={key}
               role={label}
               count={roles[key]}
-              onIncrement={() => updateRole(key, 1)}
-              onDecrement={() => updateRole(key, -1)}
+              onIncrement={() => updateRole(setRoles, 1)}
+              onDecrement={() => updateRole(setRoles, -1)}
             />
           </div>
         ))}
