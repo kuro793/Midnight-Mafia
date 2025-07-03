@@ -27,7 +27,6 @@ export default function RoleSelect() {
     { key: 'fool', label: '광대', color: 'text-yellow-200' },
     { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300' },
     { key: 'hitman', label: '청부업자', color: 'text-purple-300' },
-    // 추가 예정
   ];
 
   const [roles, setRoles] = useState(() => {
@@ -47,11 +46,20 @@ export default function RoleSelect() {
   });
 
   function updateRole(key, delta, max) {
-    setRoles(prev => ({
-      ...prev,
-      [key]: Math.max(0, Math.min(max, prev[key] + delta))
-     }));
-   }
+    setRoles(prev => {
+      const total = Object.values(prev).reduce((a, b) => a + b, 0);
+      const current = prev[key];
+      const next = current + delta;
+
+      // 증가할 때는 총합을 체크, 감소는 자유
+      if (delta > 0 && (total >= max || next > max)) return prev;
+
+      return {
+        ...prev,
+        [key]: Math.max(0, next),
+      };
+    });
+  }
 
   useEffect(() => {
     localStorage.setItem('savedRoles', JSON.stringify(roles));
