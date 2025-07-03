@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-function RoleCounter({ role, count, onIncrement, onDecrement }) {
+function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
   return (
     <div className="flex items-center gap-2">
       <span className="w-24">{role}</span>
-      <button onClick={onDecrement} className="px-2 bg-gray-700 rounded">−</button>
-      <span className="w-6 text-center">{count}</span>
-      <button onClick={onIncrement} className="px-2 bg-gray-700 rounded">＋</button>
+      {auto ? (
+        <>
+          <span className="w-6 text-center">{count}</span>
+        </>
+      ) : (
+        <>
+          <button onClick={onDecrement} className="px-2 bg-gray-700 rounded">−</button>
+          <span className="w-6 text-center">{count}</span>
+          <button onClick={onIncrement} className="px-2 bg-gray-700 rounded">＋</button>
+        </>
+      )}
     </div>
   );
 }
@@ -87,11 +95,11 @@ export default function RoleSelect() {
       <div className="flex flex-col gap-2">
         {[...new Set(rolesConfig.map(r => r.team))].map(team => (
           <div key={team} className="mb-4">
-            <h2 className="text-2xl font-bold ${color} mb-2">{team}</h2>
+            <h2 className={`text-2xl font-bold ${rolesConfig.find(r => r.team === team)?.color} mb-2`}>{team}</h2>
             <div className="flex flex-col gap-2">
               {rolesConfig
                 .filter(r => r.team === team)
-                .map(({ key, label, color }) => (
+                .map(({ key, label, color, auto }) => (
                   <div key={key} className={color}>
                     <RoleCounter
                       role={label}
