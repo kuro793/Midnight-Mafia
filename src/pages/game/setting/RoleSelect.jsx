@@ -72,7 +72,7 @@ export default function RoleSelect() {
       <div className="flex flex-col gap-2">
         {rolesConfig.map(({ key, label, color, team }) => (
           <div key={key} className={color}>
-            <h2 className="text-2xl font-italic">{team}</h2>
+            <h2 className="text-2xl">{team}</h2>
             <RoleCounter
               role={label}
               count={roles[key]}
