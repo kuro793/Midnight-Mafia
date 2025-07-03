@@ -7,7 +7,9 @@ function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
       <span className="w-24">{role}</span>
       {auto ? (
         <>
-          <span className="w-6 text-center">(자동 결정) {count}</span>
+          <button disabled className="px-2 opacity-0 rounded">−</button>
+          <span className="w-6 text-center">{count}</span>
+          <button disabled className="px-2 opacity-0 rounded">＋</button>
         </>
       ) : (
         <>
