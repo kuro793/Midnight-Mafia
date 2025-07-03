@@ -25,7 +25,7 @@ export default function RoleSelect() {
     { key: 'politician', label: '정치인', color: 'text-blue-300', team: '시민팀' },
     { key: 'survivor', label: '생존자', color: 'text-yellow-200', team: '중립 평화직' },
     { key: 'fool', label: '광대', color: 'text-yellow-200', team: '중립 평화직' },
-    { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: 중립 살인직 },
+    { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: '중립 살인직' },
     { key: 'hitman', label: '청부업자', color: 'text-purple-300', team: '중립 살인직' },
   ];
 
