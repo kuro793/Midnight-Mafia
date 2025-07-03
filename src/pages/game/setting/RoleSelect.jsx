@@ -52,14 +52,16 @@ export default function RoleSelect() {
       {/* 맢팀red400 시팀blue300 중평yellow200 중살purple300 */}
 
       <div className="flex flex-col gap-2">
-        {rolesConfig.map(({ name, key }) => (
-          <RoleCounter
-            key='mafia'
-            role='마피아'
-            count={roles[key]}
-            onIncrement={() => updateRole(key, 1)}
-            onDecrement={() => updateRole(key, -1)}
-          />
+        {rolesConfig.map(({ key, label, color }) => (
+          <div className="{color}">
+            <RoleCounter
+              key={key}
+              role={label}
+              count={roles[key]}
+              onIncrement={() => updateRole(key, 1)}
+              onDecrement={() => updateRole(key, -1)}
+            />
+          </div>
         ))}
       </div>
       
