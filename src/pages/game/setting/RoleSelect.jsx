@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+function RoleCounter({ role, count, onIncrement, onDecrement }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="w-24">{role}</span>
+      <button onClick={onDecrement} className="px-2 bg-gray-700 rounded">−</button>
+      <span className="w-6 text-center">{count}</span>
+      <button onClick={onIncrement} className="px-2 bg-gray-700 rounded">＋</button>
+    </div>
+  );
+}
+
+export default RoleCounter;
+
 export default function RoleSelect() {
   const location = useLocation();
   const { playerCount } = location.state || {};
@@ -37,19 +50,18 @@ export default function RoleSelect() {
     <div className="min-h-screen bg-black">
       <h1 className="text-3xl font-bold text-green-400">직업 구성 설정</h1>
       {/* 맢팀red400 시팀blue300 중평yellow200 중살purple300 */}
-      {/*<section>
-        <h2 className="text-2xl font-bold text-red-500">마피아팀</h2>
-        <div className="ml-4 text-red-400">
-          <RoleCounter
-            role="마피아"
-            count={mafiaCount}
-            onIncrement={() => setMafiaCount((c) => Math.min(playerCount, c + 1))}
-            onDecrement={() => setMafiaCount((c) => Math.max(0, c - 1))}
-          />
-        </div>
-      </section>*/}
 
-      {roleConfig.map
+      <div className="flex flex-col gap-2">
+        {rolesConfig.map(({ name, key }) => (
+          <RoleCounter
+            key={key}
+            role={name}
+            count={roles[key]}
+            onIncrement={() => updateRole(key, 1)}
+            onDecrement={() => updateRole(key, -1)}
+          />
+        ))}
+      </div>
       
     </div>
   );
