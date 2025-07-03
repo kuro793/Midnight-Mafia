@@ -106,6 +106,7 @@ export default function RoleSelect() {
                       count={roles[key]}
                       onIncrement={() => !auto && updateRole(key, 1, playerCount)}
                       onDecrement={() => !auto && updateRole(key, -1, playerCount)}
+                      auto={auto}
                     />
                   </div>
                 ))}
