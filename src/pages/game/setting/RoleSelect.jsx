@@ -12,8 +12,6 @@ function RoleCounter({ role, count, onIncrement, onDecrement }) {
   );
 }
 
-export default RoleCounter;
-
 export default function RoleSelect() {
   const location = useLocation();
   const { playerCount } = location.state || {};
