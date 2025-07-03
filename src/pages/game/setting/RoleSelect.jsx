@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center mb-6">
       <span className="w-24">{role}</span>
       {auto ? (
         <>
