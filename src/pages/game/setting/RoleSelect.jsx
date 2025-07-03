@@ -29,11 +29,11 @@ export default function RoleSelect() {
   const rolesConfig = [
     { key: 'mafia', label: '마피아', color: 'text-red-400', team: '마피아팀' },
     { key: 'spy', label: '스파이', color: 'text-red-400', team: '마피아팀' },
+    { key: 'citizen', label: '시민', color: 'text-blue-300', team: '시민팀', auto: true },
     { key: 'police', label: '경찰', color: 'text-blue-300', team: '시민팀' },
     { key: 'doctor', label: '의사', color: 'text-blue-300', team: '시민팀' },
     { key: 'soldier', label: '군인', color: 'text-blue-300', team: '시민팀' },
     { key: 'politician', label: '정치인', color: 'text-blue-300', team: '시민팀' },
-    { key: 'citizen', label: '시민', color: 'text-blue-300', team: '시민팀', auto: true },
     { key: 'survivor', label: '생존자', color: 'text-yellow-200', team: '중립 평화직' },
     { key: 'fool', label: '광대', color: 'text-yellow-200', team: '중립 평화직' },
     { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: '중립 살인직' },
