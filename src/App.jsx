@@ -9,7 +9,7 @@ import NeutralPeace from "./pages/roles/neutral/Peace";
 import NeutralKiller from "./pages/roles/neutral/Killer";
 import Players from "./pages/game/setting/Players";
 import RoleSelect from "./pages/game/setting/RoleSelect";
-import DayTimer from "./pages/game/setting/Daytimer";
+import DayTimer from "./pages/game/setting/DayTimer";
 
 export default function App() {
   return (
