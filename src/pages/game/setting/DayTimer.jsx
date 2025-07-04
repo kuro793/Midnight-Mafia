@@ -10,16 +10,16 @@ export default function DayTimer() {
     }
 
     // 나중에 다음 화면으로 이동하거나 저장
-    alert(`낮 시간: ${dayTime}초로 설정되었습니다.`);
+    alert(`오전 시간: ${dayTime}초로 설정되었습니다.`);
   }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-black text-white">
-      <h1 className="text-3xl font-bold text-green-400 mb-6">낮 시간 설정</h1>
+      <h1 className="text-3xl font-bold text-green-400 mb-6">오전 시간 설정</h1>
 
       <div className="flex flex-col items-center gap-4">
         <label className="text-lg">
-          낮 시간 (초 단위): {dayTime}초
+          오전 시간 (초 단위): {dayTime}초
         </label>
         <input
           type="range"
