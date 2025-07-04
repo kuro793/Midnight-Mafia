@@ -155,7 +155,7 @@ export default function RoleSelect() {
       </div>
       
       <button onClick={handleConfirm} className="mt-4 p-2 bg-green-800 text-green-400 rounded hover:bg-green-700 transition">
-        낮 시간 결정하기
+        낮(오전) 시간 결정하기
       </button>
 
       <button onClick={() => navigate('/players')} className="mt-6 text-green-300 underline">
