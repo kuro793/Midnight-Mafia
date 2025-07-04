@@ -87,6 +87,21 @@ export default function RoleSelect() {
     localStorage.setItem('savedRoles', JSON.stringify(roles));
   }, [roles]);
 
+useEffect(() => {
+  setRoles(prev => {
+    const totalWithoutCitizen = Object.entries(prev)
+      .filter(([k]) => k !== 'citizen')
+      .reduce((sum, [, count]) => sum + count, 0);
+
+    const fixedCitizen = Math.max(0, playerCount - totalWithoutCitizen);
+
+    return {
+      ...prev,
+      citizen: fixedCitizen,
+    };
+  });
+}, [playerCount]);
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-black">
       <h1 className="text-3xl font-bold text-green-400 my-6">직업 구성 설정</h1>
