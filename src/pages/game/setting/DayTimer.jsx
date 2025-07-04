@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function DayTimer() {
   const [dayTime, setDayTime] = useState(120); // 기본 120초 (2분)
+
+  const navigate = useNavigate();
 
   function handleConfirm() {
     if (dayTime < 30) {
@@ -9,8 +12,17 @@ export default function DayTimer() {
       return;
     }
 
-    // 나중에 다음 화면으로 이동하거나 저장
-    alert(`오전 시간: ${dayTime}초로 설정되었습니다.`);
+    const isConfirmed = window.confirm(
+      `낮 시간을 ${dayTime}초로 설정할까요?\n이후에는 설정을 변경할 수 없습니다.`
+    );
+
+    if (!isConfirmed) return;
+
+    // 설정 저장 (원하면 localStorage나 Context로)
+    localStorage.setItem('dayTime', String(dayTime));
+
+    // 직업 배정 화면으로 이동
+    navigate('/assign-role', { replace: true }); // replace로 뒤로 못 가게
   }
 
   return (
