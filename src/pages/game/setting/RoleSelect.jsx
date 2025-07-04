@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
   return (
@@ -23,6 +23,7 @@ function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
 }
 
 export default function RoleSelect() {
+  const navigate = useNavigate();
   const location = useLocation();
   const { playerCount } = location.state || {};
 
@@ -141,9 +142,16 @@ export default function RoleSelect() {
             </div>
           </div>
         ))}
-
       </div>
       
+      <button onClick={goToRoleSelect} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
+        직업 구성 설정하기
+      </button>
+
+      <button onClick={() => navigate('/players')} className="mt-2 text-green-300 underline">
+        ← 이전으로
+      </button>
+
     </div>
   );
 }
