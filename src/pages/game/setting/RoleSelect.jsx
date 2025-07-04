@@ -144,12 +144,16 @@ export default function RoleSelect() {
         ))}
       </div>
       
-      <button onClick={goToRoleSelect} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
+      <button onClick={() => navigate('/day-timer', { state: { playerCount, roles } })} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
         직업 구성 설정하기
       </button>
 
       <button onClick={() => navigate('/players')} className="mt-2 text-green-300 underline">
         ← 이전으로
+      </button>
+
+      <button onClick={() => navigate('/')} className="mt-2 text-green-300 underline">
+        ← 홈으로
       </button>
 
     </div>
