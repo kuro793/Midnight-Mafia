@@ -42,7 +42,21 @@ export default function RoleSelect() {
 
   const [roles, setRoles] = useState(() => {
     const saved = localStorage.getItem('savedRoles');
-    return saved ? JSON.parse(saved) : {
+    if (saved) {
+      const parsed = JSON.parse(saved);
+
+      const totalWithoutCitizen = Object.entries(parsed)
+        .filter(([k]) => k !== 'citizen')
+        .reduce((sum, [, count]) => sum + count, 0);
+
+      if (totalWithoutCitizen <= playerCount) {
+        parsed.citizen = playerCount - totalWithoutCitizen;
+        return parsed;
+      }
+    }
+
+    // 초기값 (초기화된 상태)
+    return {
       // 마피아팀
       mafia: 0,
       spy: 0,
@@ -51,12 +65,12 @@ export default function RoleSelect() {
       doctor: 0,
       soldier: 0,
       politician: 0,
-      // 시민 (자동)
-      citizen: 0,
-      // 중립 평화직
+      // 시민
+      citizen: playerCount ?? 0,
+      //중립 평화직
       survivor: 0,
       fool: 0,
-      // 중립 살인직
+      //중립 살인직
       serialKiller: 0,
       hitman: 0,
     };
@@ -87,20 +101,20 @@ export default function RoleSelect() {
     localStorage.setItem('savedRoles', JSON.stringify(roles));
   }, [roles]);
 
-useEffect(() => {
-  setRoles(prev => {
-    const totalWithoutCitizen = Object.entries(prev)
-      .filter(([k]) => k !== 'citizen')
-      .reduce((sum, [, count]) => sum + count, 0);
+  useEffect(() => {
+    setRoles(prev => {
+      const totalWithoutCitizen = Object.entries(prev)
+        .filter(([k]) => k !== 'citizen')
+        .reduce((sum, [, count]) => sum + count, 0);
 
-    const fixedCitizen = Math.max(0, playerCount - totalWithoutCitizen);
+      const fixedCitizen = Math.max(0, playerCount - totalWithoutCitizen);
 
-    return {
-      ...prev,
-      citizen: fixedCitizen,
-    };
-  });
-}, [playerCount]);
+      return {
+        ...prev,
+        citizen: fixedCitizen,
+      };
+    });
+  }, [playerCount]);
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-black">
