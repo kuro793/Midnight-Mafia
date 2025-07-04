@@ -162,7 +162,7 @@ export default function RoleSelect() {
         ← 이전으로
       </button>
 
-      <button onClick={() => navigate('/')} className="mt-6 text-green-300 underline">
+      <button onClick={() => navigate('/')} className="my-6 text-green-300 underline">
         ← 홈으로
       </button>
 
