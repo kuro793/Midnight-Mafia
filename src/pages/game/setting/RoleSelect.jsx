@@ -64,24 +64,22 @@ export default function RoleSelect() {
 
   function updateRole(key, delta, max) {
     setRoles(prev => {
-      const current = prev[key];
-      const next = current + delta;
-
-      // 증가할 때는 총합을 체크, 감소는 자유
-      if (delta > 0 && (Object.values(prev).reduce((a, b) => a + b, 0) >= max || next > max)) return prev;
-
-      const updated = {
+      const newRoles = {
         ...prev,
-        [key]: Math.max(0, next),
+        [key]: Math.max(0, prev[key] + delta),
       };
 
-      const totalWithoutCitizen = Object.entries(updated)
+      // citizen을 제외한 총합
+      const totalWithoutCitizen = Object.entries(newRoles)
         .filter(([k]) => k !== 'citizen')
         .reduce((sum, [, count]) => sum + count, 0);
 
-      updated.citizen = Math.max(0, max - totalWithoutCitizen);
+      // 합이 max를 넘는 경우 롤백
+      if (totalWithoutCitizen > max) return prev;
 
-      return updated;
+      newRoles.citizen = max - totalWithoutCitizen;
+
+      return newRoles;
     });
   }
 
