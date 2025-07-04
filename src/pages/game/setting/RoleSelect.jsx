@@ -75,7 +75,7 @@ export default function RoleSelect() {
         .reduce((sum, [, count]) => sum + count, 0);
 
       // 합이 max를 넘는 경우 롤백
-      if (totalWithoutCitizen > max) return prev;
+      if (totalWithoutCitizen > max || newRoles[key] < 0) return prev;
 
       newRoles.citizen = max - totalWithoutCitizen;
 
