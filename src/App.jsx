@@ -10,6 +10,7 @@ import NeutralKiller from "./pages/roles/neutral/Killer";
 import Players from "./pages/game/setting/Players";
 import RoleSelect from "./pages/game/setting/RoleSelect";
 import DayTimer from "./pages/game/setting/DayTimer";
+import AssignRole from "./pages/game/AssignRole";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/players" element={<Players />} />
         <Route path="/role-select" element={<RoleSelect />} />
         <Route path="/day-timer" element={<DayTimer/>} />
+        <Route path="/assign-role" element={<AssignRole/>} />
       </Routes>
     </Router>
   );
