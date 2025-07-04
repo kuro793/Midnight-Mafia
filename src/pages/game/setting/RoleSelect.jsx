@@ -35,7 +35,7 @@ export default function RoleSelect() {
         return `${roleLabel} ${count}명`;
       })
       .join('\n');
-    const confirmed = window.confirm(`다음 직업 구성으로 진행하시겠습니까?\n\n${roleSummary}\n\n이 화면을 지나면 다시 돌아올 수 없습니다.`);
+    const confirmed = window.confirm(`다음 직업 구성으로 진행하시겠습니까?\n\n${roleSum}\n\n이 화면을 지나면 다시 돌아올 수 없습니다.`);
     if (confirmed) navigate('/day-timer');
   }
 
