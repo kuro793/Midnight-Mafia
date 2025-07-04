@@ -27,6 +27,18 @@ export default function RoleSelect() {
   const location = useLocation();
   const { playerCount } = location.state || {};
 
+  function handleConfirm() {
+    const roleSum = Object.entries(roles)
+      .filter(([, count]) => count > 0)
+      .map(([key, count]) => {
+        const roleLabel = rolesConfig.find(r => r.key === key)?.label || key;
+        return `${roleLabel} ${count}명`;
+      })
+      .join('\n');
+    const confirmed = window.confirm(`다음 직업 구성으로 진행하시겠습니까?\n\n${roleSummary}\n\n이 화면을 지나면 다시 돌아올 수 없습니다.`);
+    if (confirmed) navigate('/day-timer');
+  }
+
   const rolesConfig = [
     { key: 'mafia', label: '마피아', color: 'text-red-400', team: '마피아팀' },
     { key: 'spy', label: '스파이', color: 'text-red-400', team: '마피아팀' },
@@ -56,7 +68,7 @@ export default function RoleSelect() {
       }
     }
 
-    // 초기값 (초기화된 상태)
+    // 초기값
     return {
       // 마피아팀
       mafia: 0,
@@ -84,12 +96,10 @@ export default function RoleSelect() {
         [key]: Math.max(0, prev[key] + delta),
       };
 
-      // citizen을 제외한 총합
       const totalWithoutCitizen = Object.entries(newRoles)
         .filter(([k]) => k !== 'citizen')
         .reduce((sum, [, count]) => sum + count, 0);
 
-      // 합이 max를 넘는 경우 롤백
       if (totalWithoutCitizen > max || newRoles[key] < 0) return prev;
 
       newRoles.citizen = max - totalWithoutCitizen;
@@ -144,15 +154,15 @@ export default function RoleSelect() {
         ))}
       </div>
       
-      <button onClick={() => navigate('/day-timer', { state: { playerCount, roles } })} className="mt-4 p-2 bg-green-800 rounded hover:bg-green-700 transition">
-        직업 구성 설정하기
+      <button onClick={handleConfirm} className="mt-4 p-2 bg-green-800 text-green-400 rounded hover:bg-green-700 transition">
+        낮 시간 결정하기
       </button>
 
-      <button onClick={() => navigate('/players')} className="mt-2 text-green-300 underline">
+      <button onClick={() => navigate('/players')} className="mt-6 text-green-300 underline">
         ← 이전으로
       </button>
 
-      <button onClick={() => navigate('/')} className="mt-2 text-green-300 underline">
+      <button onClick={() => navigate('/')} className="mt-6 text-green-300 underline">
         ← 홈으로
       </button>
 
