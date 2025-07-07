@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { rolesConfig } from './setting/RoleSelect';
 
 export default function AssignRole() {
   const location = useLocation();
@@ -30,6 +32,9 @@ export default function AssignRole() {
     }
   };
 
+  const currentRoleKey = roles[current];
+  const currentRoleLabel = rolesConfig.find(r => r.key === currentRoleKey)?.label || currentRoleKey;
+
   if (!roles.length) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-green-400">
@@ -56,7 +61,7 @@ export default function AssignRole() {
       ) : (
         <>
           <p className="text-xl my-6">
-            당신의 역할은 <span className="font-bold text-white">{roles[current]}</span>입니다.
+            당신의 역할은 <span className="font-bold text-white">{currentRoleLabel}</span>입니다.
           </p>
           <button
             onClick={handleNext}
