@@ -11,6 +11,7 @@ import Players from "./pages/game/setting/Players";
 import RoleSelect from "./pages/game/setting/RoleSelect";
 import DayTimer from "./pages/game/setting/DayTimer";
 import AssignRole from "./pages/game/AssignRole";
+import PreGaming from "./pages/game/PreGaming";
 import Gaming from "./pages/game/Gaming";
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/role-select" element={<RoleSelect />} />
         <Route path="/day-timer" element={<DayTimer/>} />
         <Route path="/assign-role" element={<AssignRole/>} />
+        <Route path="/pre-gaming" element={<PreGaming/>} />
         <Route path="/gaming" element={<Gaming/>} />
       </Routes>
     </Router>
