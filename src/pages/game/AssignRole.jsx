@@ -28,7 +28,7 @@ export default function AssignRole() {
       setRevealed(false);
       setCurrent(prev => prev + 1);
     } else {
-      navigate('/pre-gaming'); // 다음 화면으로 이동
+      navigate('/gaming'); // 다음 화면으로 이동
     }
   };
 
