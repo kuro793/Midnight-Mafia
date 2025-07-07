@@ -18,11 +18,11 @@ export default function DayTimer() {
 
     if (!isConfirmed) return;
 
-    // 설정 저장 (원하면 localStorage나 Context로)
+    // 설정 저장
     localStorage.setItem('dayTime', String(dayTime));
 
-    // 직업 배정 화면으로 이동
-    navigate('/assign-role', { replace: true }); // replace로 뒤로 못 가게
+    // 음성 조절 안내 화면으로 이동
+    navigate('/pre-gaming', { replace: true }); // replace로 뒤로 못 가게
   }
 
   return (
