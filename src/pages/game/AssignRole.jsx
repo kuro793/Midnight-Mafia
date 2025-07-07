@@ -23,6 +23,15 @@ export default function AssignRole() {
     setRoles(shuffled);
   }, []);
 
+useEffect(() => {
+    if (!revealed && roles.length > 0) {
+      const message = `${current + 1}번 플레이어. 직업을 확인하세요.`;
+      const utterance = new SpeechSynthesisUtterance(message);
+      utterance.lang = 'ko-KR';
+      speechSynthesis.speak(utterance);
+    }
+  }, [current, revealed, roles]);
+
   const handleNext = () => {
     if (current < roles.length - 1) {
       setRevealed(false);
