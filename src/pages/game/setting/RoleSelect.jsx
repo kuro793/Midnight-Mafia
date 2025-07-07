@@ -22,6 +22,20 @@ function RoleCounter({ role, count, onIncrement, onDecrement, auto = false }) {
   );
 }
 
+export const rolesConfig = [
+  { key: 'mafia', label: '마피아', color: 'text-red-400', team: '마피아팀' },
+  { key: 'spy', label: '스파이', color: 'text-red-400', team: '마피아팀' },
+  { key: 'police', label: '경찰', color: 'text-blue-300', team: '시민팀' },
+  { key: 'doctor', label: '의사', color: 'text-blue-300', team: '시민팀' },
+  { key: 'soldier', label: '군인', color: 'text-blue-300', team: '시민팀' },
+  { key: 'politician', label: '정치인', color: 'text-blue-300', team: '시민팀' },
+  { key: 'citizen', label: '시민', color: 'text-blue-300', team: '시민팀', auto: true },
+  { key: 'survivor', label: '생존자', color: 'text-yellow-200', team: '중립 평화직' },
+  { key: 'fool', label: '광대', color: 'text-yellow-200', team: '중립 평화직' },
+  { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: '중립 살인직' },
+  { key: 'hitman', label: '청부업자', color: 'text-purple-300', team: '중립 살인직' },
+];
+
 export default function RoleSelect() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,20 +52,6 @@ export default function RoleSelect() {
     const confirmed = window.confirm(`다음 구성으로 진행하시겠습니까?\n\n총 플레이어 수: ${playerCount}명\n\n직업 구성:\n${roleSum}\n\n이 화면을 지나면 다시 돌아올 수 없습니다.`);
     if (confirmed) navigate('/day-timer');
   }
-
-  const rolesConfig = [
-    { key: 'mafia', label: '마피아', color: 'text-red-400', team: '마피아팀' },
-    { key: 'spy', label: '스파이', color: 'text-red-400', team: '마피아팀' },
-    { key: 'police', label: '경찰', color: 'text-blue-300', team: '시민팀' },
-    { key: 'doctor', label: '의사', color: 'text-blue-300', team: '시민팀' },
-    { key: 'soldier', label: '군인', color: 'text-blue-300', team: '시민팀' },
-    { key: 'politician', label: '정치인', color: 'text-blue-300', team: '시민팀' },
-    { key: 'citizen', label: '시민', color: 'text-blue-300', team: '시민팀', auto: true },
-    { key: 'survivor', label: '생존자', color: 'text-yellow-200', team: '중립 평화직' },
-    { key: 'fool', label: '광대', color: 'text-yellow-200', team: '중립 평화직' },
-    { key: 'serialKiller', label: '연쇄 살인마', color: 'text-purple-300', team: '중립 살인직' },
-    { key: 'hitman', label: '청부업자', color: 'text-purple-300', team: '중립 살인직' },
-  ];
 
   const [roles, setRoles] = useState(() => {
     const saved = localStorage.getItem('savedRoles');
